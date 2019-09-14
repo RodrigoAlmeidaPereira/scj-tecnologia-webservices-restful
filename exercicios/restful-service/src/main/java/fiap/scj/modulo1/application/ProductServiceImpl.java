@@ -115,7 +115,7 @@ public class ProductServiceImpl implements ProductService {
                 log.debug("Product not found for id={}", id);
                 throw new ProductServiceException(PRODUCT_NOT_FOUND_ERROR, null);
             }
-            repository.deleteById(id);
+            repository.delete(this.retrieve(id));
         } catch (Exception e) {
             log.error("Error creating product", e);
             throw new ProductServiceException(DELETE_OPERATION_ERROR, e);
